@@ -1,0 +1,15 @@
+dbt_esteve_us:
+  target: dev
+  outputs:
+    dev:
+      type: fabric
+      driver: "ODBC Driver 18 for SQL Server"
+      authentication: environment
+      tenant_id: "{{ env_var('AZURE_TENANT_ID', '00000000-0000-0000-0000-000000000000') }}"
+      client_id: "{{ env_var('AZURE_CLIENT_ID', '00000000-0000-0000-0000-000000000000') }}"
+      client_secret: "{{ env_var('AZURE_CLIENT_SECRET', 'dummy') }}"
+      workspace_name: "PHR_PRE_US_ELT_DEV"
+      database: WH_TEST
+      schema: dbo
+      threads: 4
+      retry_all: true
